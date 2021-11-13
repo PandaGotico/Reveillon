@@ -16,6 +16,7 @@ public class Reveillon {
     private static final List<String> MES_OUTUBRO = List.of("OUTUBRO", "OUT", "10");
     private static final List<String> MES_NOVEMBRO = List.of("NOVEMBRO", "NOV", "11");
     private static final List<String> MES_DEZEMBRO = List.of("DEZEMBRO", "DEZ", "12");
+    private static final List<String> MES_30 = List.of("4","6","9","11");
 
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
@@ -28,11 +29,12 @@ public class Reveillon {
         System.err.println("informe o dia de hoje: ");
         dia = scan.nextInt();
 
-        System.err.println("informe o mês: ");
+        System.out.println("informe o mês: ");
         mesEscrito = scan.next().toUpperCase(Locale.ROOT);
 
         //condição do valor do mês//
-            if (MES_JANEIRO.contains(mesEscrito)){
+
+            if (MES_JANEIRO.contains(mesEscrito)) {
                 mes = 1;
 
             } else if (MES_FEVEREIRO.contains(mesEscrito)) {
@@ -83,9 +85,23 @@ public class Reveillon {
                 System.out.println("Erro no valor do mês");
             }
 
-        System.out.println("hoje é dia " + dia + "/" + mes );
-        System.out.println("Faltam apenas " + (diasRestantes - dia) + " para o ano novo.");
-        System.out.println("se o ano for bisexto " + (diasRestantes - dia +1) + ". :) ");
+        if (dia > 31){
+            System.err.println("Data invalida!");
 
+        } else if (mes == 2 && dia == 29){
+            System.out.println("hoje é dia " + dia + "/" + mes );
+            System.out.println("Faltam apenas " + (diasRestantes - dia + 1) + " para o ano novo.");
+
+        } else if (mes == 2 && dia >=28 || dia<=0){
+            System.err.println("Data invalida!");
+
+        } else if (MES_30.contains(mes) && dia<=0 || dia > 30){
+            System.err.println("Data invalida!");
+
+        } else {
+            System.out.println("Hoje é dia " + dia + "/" + mes );
+            System.out.println("Faltam apenas " + (diasRestantes - dia) + " para o ano novo.");
+            System.out.println("Se o ano for bisexto " + (diasRestantes - dia +1) + ". :) ");
+        }
     }
 }
