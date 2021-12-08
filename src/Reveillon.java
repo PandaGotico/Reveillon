@@ -42,66 +42,78 @@ public class Reveillon {
                 mes = 2;
 
             } else if (MES_MARCO.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28);
+                diasRestantes = (365 - 59);
                 mes = 3;
 
             } else if (MES_ABRIL.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28 - 31);
+                diasRestantes = (365 - 90);
                 mes = 4;
 
             } else if (MES_MAIO.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28 - 31 - 30);
+                diasRestantes = (365 - 120);
                 mes = 5;
 
             } else if (MES_JUNHO.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28 - 31 - 30 - 31);
+                diasRestantes = (365 - 151);
                 mes = 6;
 
             } else if (MES_JULHO.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28 - 31 - 30 - 31 - 30);
+                diasRestantes = (365 - 181);
                 mes = 7;
 
             } else if (MES_AGOSTO.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28 - 31 - 30 - 31 - 30 - 31);
+                diasRestantes = (365 - 211);
                 mes = 8;
 
             } else if (MES_SETEMBRO.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28 - 31 - 30 - 31 - 30 - 31 - 31);
+                diasRestantes = (365 - 242);
                 mes = 9;
 
             } else if (MES_OUTUBRO.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28 - 31 - 30 - 31 - 30 - 31 - 31 - 30);
+                diasRestantes = (365 - 272);
                 mes = 10;
 
             } else if (MES_NOVEMBRO.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28 - 31 - 30 - 31 - 30 - 31 - 31 - 30 - 31);
+                diasRestantes = (365 - 303);
                 mes = 11;
 
             } else if (MES_DEZEMBRO.contains(mesEscrito)) {
-                diasRestantes = (365 - 31 - 28 - 31 - 30 - 31 - 30 - 31 - 31 - 30 - 31 - 30);
+                diasRestantes = (365 - 333);
                 mes = 12;
 
             } else {
                 System.out.println("Erro no valor do mês");
             }
+        if (mes <= 2) {
+            if (dia > 31) {
+                System.err.println("Data invalida!");
 
-        if (dia > 31){
-            System.err.println("Data invalida!");
+            } else if (mes == 2 && dia == 29) {
+                System.out.println("hoje é dia " + dia + "/" + mes);
+                System.out.println("Faltam apenas " + (diasRestantes - dia + 1) + " para o ano novo.");
 
-        } else if (mes == 2 && dia == 29){
-            System.out.println("hoje é dia " + dia + "/" + mes );
-            System.out.println("Faltam apenas " + (diasRestantes - dia + 1) + " para o ano novo.");
+            } else if (mes == 2 && dia >= 28 || dia <= 0) {
+                System.err.println("Data invalida!");
 
-        } else if (mes == 2 && dia >=28 || dia<=0){
-            System.err.println("Data invalida!");
+            } else if (MES_30.contains(mes) && dia <= 0 || dia > 30) {
+                System.err.println("Data invalida!");
 
-        } else if (MES_30.contains(mes) && dia<=0 || dia > 30){
-            System.err.println("Data invalida!");
-
+            } else {
+                System.out.println("Hoje é dia " + dia + "/" + mes);
+                System.out.println("Faltam apenas " + (diasRestantes - dia) + " para o ano novo.");
+                System.out.println("Se o ano for bisexto " + (diasRestantes - dia + 1) + ". :) ");
+            }
         } else {
-            System.out.println("Hoje é dia " + dia + "/" + mes );
-            System.out.println("Faltam apenas " + (diasRestantes - dia) + " para o ano novo.");
-            System.out.println("Se o ano for bisexto " + (diasRestantes - dia +1) + ". :) ");
+            if (dia > 31) {
+                System.err.println("Data invalida!");
+
+            }  else if (MES_30.contains(mes) && dia <= 0 || dia > 30) {
+                System.err.println("Data invalida!");
+
+            } else {
+                System.out.println("Hoje é dia " + dia + "/" + mes);
+                System.out.println("Faltam apenas " + (diasRestantes - dia) + " para o ano novo.");
+            }
         }
     }
 }
